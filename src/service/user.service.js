@@ -30,4 +30,12 @@ async function deleteUserById(id) {
     return data;
 }
 
-module.exports = { getAllUsers, getUsersById, createUser, upDateUser,  deleteUserById };
+async function authorizationUser(email, pwd) {
+    const user = await getUserByEmailDb(email);
+    if (!user.length) throw new Error("email not found");
+    const bool = await bcrypt.compare(pwd, user[0].pwd);
+    if (!bool) throw new Error("пароли не совпадают");
+    return user;
+}
+
+module.exports = { getAllUsers, getUsersById, createUser, upDateUser,  deleteUserById, authorizationUser };

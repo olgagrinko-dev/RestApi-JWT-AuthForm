@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllUsers, getUsersById, createUser, upDateUser, deleteUserById } = require('../service/user.service');
+const { getAllUsers, getUsersById, createUser, upDateUser, deleteUserById, authorizationUser } = require('../service/user.service');
 
 const route = express.Router();
 
@@ -15,7 +15,7 @@ route.get('/', async (req, res) => {
 route.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const data = await getUsersById(id);       
+        const data = await getUsersById(id);
         res.send(data);
     } catch (error) {
         res.send(error.message);
@@ -55,9 +55,9 @@ route.delete('/:id', async (req, res) => {
 
 route.post('/auth', async (req, res) => {
     try {
-        // const { email, password } = req.body;
-        // const data = await authorizationUse(email, password);
-        // res.send(data);
+        const { email, password } = req.body;
+        const data = await authorizationUser(email, password);
+        res.send(data);
     } catch (error) {
         res.send(error.message);
     }
