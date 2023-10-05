@@ -14,7 +14,6 @@ async function getUsersByIdDb(id) {
     return result;
 }
 
-
 async function createUserDb(name, surname, email, password) {
     const client = await pool.connect();
     const sql = 'insert into users(name, surname, email, password) values($1, $2, $3, $4) returning *';
