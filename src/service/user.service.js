@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { getAllUsersDb, createUserDb, upDateUserDb, getUserByEmailDb } = require('../repository/user.repository');
+const { getAllUsersDb, createUserDb, upDateUserDb,  deleteUserByIdDb, getUserByEmailDb } = require('../repository/user.repository');
 
 async function getAllUsers() {
     const data = await getAllUsersDb();
@@ -20,4 +20,9 @@ async function upDateUser(id, name, surname, email, password) {
     return data;
 }
 
-module.exports = { getAllUsers, createUser, upDateUser };
+async function deleteUserById(id) {
+    const data = await deleteUserByIdDb(id);
+    return data;
+}
+
+module.exports = { getAllUsers, createUser, upDateUser,  deleteUserById };
