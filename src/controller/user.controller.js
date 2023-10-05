@@ -1,11 +1,21 @@
 const express = require('express');
-const { getAllUsers, createUser, upDateUser,  deleteUserById } = require('../service/user.service');
+const { getAllUsers, getUsersById, createUser, upDateUser, deleteUserById } = require('../service/user.service');
 
 const route = express.Router();
 
 route.get('/', async (req, res) => {
     try {
         const data = await getAllUsers();
+        res.send(data);
+    } catch (error) {
+        res.send(error.message);
+    }
+})
+
+route.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const data = await getUsersById(id);       
         res.send(data);
     } catch (error) {
         res.send(error.message);
