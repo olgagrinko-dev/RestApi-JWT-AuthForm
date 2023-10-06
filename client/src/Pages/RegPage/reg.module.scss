@@ -1,0 +1,62 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 100px;
+        margin-bottom: 40px;
+
+        h1 {
+            color: #12141A;
+            font: 500 23px Inter;
+        }
+
+        p {
+            color: #606778;
+            font: 500 14px Inter;
+        }
+    }
+
+    .log {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .blokName{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        p {
+            color: #606778;
+            font: 500 12px Inter;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            color: #7B8499;
+            font: 500 14px Inter;
+            border-radius: 6px;
+            border: 1px solid #CAD0DB;
+        }
+    }
+
+    button {
+        width: 96px;
+        padding: 12px;
+        border-radius: 4px;
+        background: var(--blue-6, #228BE6);
+        margin-left: auto;
+        color: var(--other-white, #FFF);
+        border-width: 0;
+    }
+
+    .text {
+        color: #7B8499;
+        font: 500 14px Inter;
+        text-align: end;
+    }
+}
