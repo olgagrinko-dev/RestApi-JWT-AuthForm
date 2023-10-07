@@ -1,7 +1,16 @@
 import Header from "../../components/Header/Header";
 import style from "./reg.module.scss";
+import { useState } from "react";
+import axios from 'axios';
 
 function RegPage() {
+    const [input, setInput] = useState({});
+    const array = ["name", "surname", "email", "pwd"];
+
+    async function isShow() {
+        const result = await axios.post('http://localhost:3001/api/reg', input);
+        console.log(result.data);
+    }
     return (
         <div>
             <Header />
