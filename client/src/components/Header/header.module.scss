@@ -1,10 +1,12 @@
 .header {
     display: flex;
     justify-content: center;  
-    gap: 24px;
+    align-items: center;
+    gap: 46px;    
 
     p {
         color: #000;
         font: 400 16px Inter;
+        margin-top: 24px;
     }
 }

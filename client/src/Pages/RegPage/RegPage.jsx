@@ -31,13 +31,11 @@ function RegPage() {
                         <input placeholder="Must be at least 8 characters."></input>
                     </div>
                 </div>
-                
+
                 <button>Continue</button>
                 <p className={style.text}>Already registered? Sign In</p>
 
             </div>
-
-
         </div>
     )
 }

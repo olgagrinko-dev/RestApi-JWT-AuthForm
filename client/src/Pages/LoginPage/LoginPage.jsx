@@ -22,10 +22,10 @@ function LoginPage() {
                         <input placeholder="Must be at least 8 characters."></input>
                     </div>
                 </div>
+                
                 <button>Continue</button>
                 <p className={style.text}>Not registered yet? Sign Up</p>
             </div>
-
         </div>
     )
 }
