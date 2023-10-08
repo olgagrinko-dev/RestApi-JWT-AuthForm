@@ -11,11 +11,11 @@ function RegPage() {
     }
 
     async function isShow() {
-        // const result = await axios.post('http://localhost:3001/api/reg', input);
-        // console.log(result.data);
+        const result = await axios.post('http://localhost:3001/user', input);
+        console.log(result.data);
         console.log(input);
     }
-    
+
     return (
         <div>
             <Header />
