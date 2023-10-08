@@ -57,6 +57,7 @@ route.post('/auth', async (req, res) => {
     try {
         const { email, password } = req.body;
         const data = await authorizationUser(email, password);
+        
         res.send(data);
     } catch (error) {
         res.send(error.message);

@@ -4,13 +4,18 @@ import { useState } from "react";
 import axios from 'axios';
 
 function RegPage() {
-    const [input, setInput] = useState({});
-    const array = ["name", "surname", "email", "pwd"];
+    const [input, setInput] = useState({ name: "", surname: "", email: "", password: "" });   
+
+    function chengeInp(event) {
+        setInput({ ...input, [event.target.name]: event.target.value});
+    }
 
     async function isShow() {
-        const result = await axios.post('http://localhost:3001/api/reg', input);
-        console.log(result.data);
+        // const result = await axios.post('http://localhost:3001/api/reg', input);
+        // console.log(result.data);
+        console.log(input);
     }
+    
     return (
         <div>
             <Header />
@@ -23,25 +28,25 @@ function RegPage() {
                     <div className={style.blokName}>
                         <div>
                             <p>name</p>
-                            <input placeholder="Your name"></input>
+                            <input name='name' placeholder="Your name" onChange={chengeInp}></input>
                         </div>
                         <div>
                             <p>surname</p>
-                            <input placeholder="Your surname"></input>
+                            <input name ='surname' placeholder="Your surname" onChange={chengeInp}></input>
                         </div>
                     </div>
 
                     <div>
                         <p>email</p>
-                        <input placeholder="Your email"></input>
+                        <input name ='email' placeholder="Your email" onChange={chengeInp}></input>
                     </div>
                     <div>
                         <p>password</p>
-                        <input placeholder="Must be at least 8 characters."></input>
+                        <input name ='password' placeholder="Must be at least 8 characters." onChange={chengeInp}></input>
                     </div>
                 </div>
 
-                <button>Continue</button>
+                <button onClick={isShow}>Continue</button>
                 <p className={style.text}>Already registered? Sign In</p>
 
             </div>

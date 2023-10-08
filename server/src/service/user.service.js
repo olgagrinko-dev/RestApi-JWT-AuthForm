@@ -16,6 +16,7 @@ async function createUser(name, surname, email, password) {
     if(user.length) throw new Error ('такой пользователь уже существует');
     const saltroud = 2;
     const hashedPassword = await bcrypt.hash(password, saltroud);
+    console.log('+');
     const data = await createUserDb(name, surname, email, hashedPassword);
     return data;
 }
@@ -30,10 +31,10 @@ async function deleteUserById(id) {
     return data;
 }
 
-async function authorizationUser(email, pwd) {
+async function authorizationUser(email, password) {
     const user = await getUserByEmailDb(email);
     if (!user.length) throw new Error("email not found");
-    const bool = await bcrypt.compare(pwd, user[0].pwd);
+    const bool = await bcrypt.compare(password, user[0].password);
     if (!bool) throw new Error("пароли не совпадают");
     return user;
 }
