@@ -1,5 +1,6 @@
 const express = require('express');
 const { getAllUsers, getUsersById, createUser, upDateUser, deleteUserById, authorizationUser } = require('../service/user.service');
+const  createToken  = require('../helper/JWT');
 
 const route = express.Router();
 
@@ -57,7 +58,12 @@ route.post('/auth', async (req, res) => {
     try {
         const { email, password } = req.body;
         const data = await authorizationUser(email, password);
-        
+        const token = createToken(data);
+        console.log(token);
+        res.cookie('access_token', token, {
+            httpOnly: false,
+            secure: true
+        });
         res.send(data);
     } catch (error) {
         res.send(error.message);
