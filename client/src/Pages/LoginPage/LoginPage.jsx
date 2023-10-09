@@ -2,15 +2,22 @@ import Header from "../../components/Header/Header";
 import style from "./login.module.scss";
 import { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-    const [input, setInput] = useState({});
-    const array = ["email", "pwd"];
+    const [input, setInput] = useState({ email: "", password: "" });
+    const navigate = useNavigate();
+
+    function chengeInp(event) {
+        setInput({ ...input, [event.target.name]: event.target.value })
+    }
 
     async function authUser() {
-        const result = await axios.post('http://localhost:3001/api/auth', input);
-        console.log(result.data);
+        const result = await axios.post('http://localhost:3001/user/auth', input, { withCredentials: true });
+        console.log(result.data); 
+        navigate('/home');      
     }
+
     return (
         <div>
             <Header />
@@ -23,15 +30,15 @@ function LoginPage() {
                 <div className={style.log}>
                     <div>
                         <p>email</p>
-                        <input placeholder="Your email"></input>
+                        <input name="email" placeholder="Your email" onChange={chengeInp}></input>
                     </div>
                     <div>
                         <p>password</p>
-                        <input placeholder="Must be at least 8 characters."></input>
+                        <input name="password" placeholder="Must be at least 8 characters." onChange={chengeInp}></input>
                     </div>
                 </div>
 
-                <button>Continue</button>
+                <button onClick={authUser}>Continue</button>
                 <p className={style.text}>Not registered yet? Sign Up</p>
             </div>
         </div>
