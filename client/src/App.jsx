@@ -4,7 +4,6 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import HomePage from "./Pages/HomePage/HomePage";
 
 function App() {
-
   return (
     <Routes>
       <Route path="/reg" element={<RegPage />}></Route>

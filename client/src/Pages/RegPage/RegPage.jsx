@@ -4,10 +4,10 @@ import { useState } from "react";
 import axios from 'axios';
 
 function RegPage() {
-    const [input, setInput] = useState({ name: "", surname: "", email: "", password: "" });   
+    const [input, setInput] = useState({ name: "", surname: "", email: "", password: "" });
 
     function chengeInp(event) {
-        setInput({ ...input, [event.target.name]: event.target.value});
+        setInput({ ...input, [event.target.name]: event.target.value });
     }
 
     async function isShow() {
@@ -24,6 +24,7 @@ function RegPage() {
                     <h1>Welcome, let's create an account</h1>
                     <p>Create an account to keep track of your customers, and contributors. Once your account has been created then don’t forget to verify your account through mail.</p>
                 </div>
+                
                 <div className={style.log}>
                     <div className={style.blokName}>
                         <div>
@@ -32,17 +33,17 @@ function RegPage() {
                         </div>
                         <div>
                             <p>surname</p>
-                            <input name ='surname' placeholder="Your surname" onChange={chengeInp}></input>
+                            <input name='surname' placeholder="Your surname" onChange={chengeInp}></input>
                         </div>
                     </div>
 
                     <div>
                         <p>email</p>
-                        <input name ='email' placeholder="Your email" onChange={chengeInp}></input>
+                        <input name='email' placeholder="Your email" onChange={chengeInp}></input>
                     </div>
                     <div>
                         <p>password</p>
-                        <input name ='password' placeholder="Must be at least 8 characters." onChange={chengeInp}></input>
+                        <input name='password' placeholder="Must be at least 8 characters." onChange={chengeInp}></input>
                     </div>
                 </div>
 
