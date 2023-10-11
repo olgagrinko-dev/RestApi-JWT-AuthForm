@@ -1,15 +1,17 @@
-import { Route, Routes } from "react-router-dom";
-import RegPage from "./Pages/RegPage/RegPage";
-import LoginPage from "./Pages/LoginPage/LoginPage";
-import HomePage from "./Pages/HomePage/HomePage";
+import RoutesProvaider from "./RoutesProvaider/RoutersProvaider";
+import useAuth from "./hook/useAuth";
+import MyContext from "./context/context";
 
 function App() {
+  const data = useAuth();
+  const route = RoutesProvaider(data.token);
+
   return (
-    <Routes>
-      <Route path="/reg" element={<RegPage />}></Route>
-      <Route path="/" element={<LoginPage />}></Route>
-      <Route path="/home" element={<HomePage />}></Route>
-    </Routes>
+    <>
+      <MyContext.Provider value={data}>
+        {route}
+      </MyContext.Provider>
+    </>
   )
 }
 

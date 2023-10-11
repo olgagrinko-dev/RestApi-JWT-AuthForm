@@ -1,8 +1,11 @@
 import cooki from 'js-cookie';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function useAuth() {
     const [token, setToken] = useState(null);
+    useEffect(() => {
+        login();
+    }, [])
 
     function login() {
         const token = cooki.get('access_token');

@@ -1,11 +1,13 @@
 import Header from "../../components/Header/Header";
 import style from "./login.module.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import MyContext from "../../context/context";
 
 function LoginPage() {
     const [input, setInput] = useState({ email: "", password: "" });
+    const contextGlobalData = useContext(MyContext);
     const navigate = useNavigate();
 
     function chengeInp(event) {
@@ -14,8 +16,9 @@ function LoginPage() {
 
     async function authUser() {
         const result = await axios.post('http://localhost:3001/user/auth', input, { withCredentials: true });
-        console.log(result.data); 
-        navigate('/home');      
+        console.log(result.data);
+        contextGlobalData.login()
+        navigate('/home');
     }
 
     return (
